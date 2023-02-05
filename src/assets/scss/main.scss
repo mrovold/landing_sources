@@ -1,0 +1,1201 @@
+// Обнуление
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+*,
+*:before,
+*:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+:focus,
+:active {
+  outline: none;
+}
+a:focus,
+a:active {
+  outline: none;
+}
+
+nav,
+footer,
+header,
+aside {
+  display: block;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  font-size: 100%;
+  line-height: 1;
+  font-size: 14px;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+input,
+button,
+textarea {
+  font-family: inherit;
+}
+
+input::-ms-clear {
+  display: none;
+}
+button {
+  cursor: pointer;
+}
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+a,
+a:visited {
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: none;
+}
+ul li {
+  list-style: none;
+}
+img {
+  vertical-align: top;
+  width: 100%;
+  height: auto;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: 400;
+}
+// обнуление
+
+// основные цвета
+$darkBlue: #0d2e73;
+$brightBlue: #b7f2fa;
+$middleBlue: #abceec;
+$darkText: #0d0d51;
+$whiteText: #ffffff;
+// основные цвета
+
+// МИКСИН АДАПТИНВНОГО ШРИФТА
+$maxWidth: 1920; //Максимальная ширина макета
+
+@mixin adaptiveFont($pcSize, $mobSize) {
+  $addSize: $pcSize - $mobSize; //pcSize - Желаемый размер шрифта на максимальной ширине экрана; mobSize - Желаемый размер шрифта на экранах шириной 320 пикселей
+  $addMobSize: $addSize + $addSize * 0.7;
+  @media (max-width: 767px) {
+    font-size: calc(
+      #{$mobSize + px} + #{$addMobSize} * ((100vw -320) / #{$maxWidth})
+    );
+  }
+  @media (min-width: 360px) {
+    font-size: calc(#{$mobSize + px} + #{$addSize} * (100vw / #{$maxWidth}));
+  }
+}
+// МИКСИН АДАПТИНВНОГО ШРИФТА
+
+@font-face {
+  font-family: "Roboto", sans-serif;
+  src: url("../fonts/Roboto_300.ttf");
+  src: url("../fonts/Roboto_300_Italic.ttf");
+  src: url("../fonts/Roboto_400.ttf");
+  src: url("../fonts/Roboto_400_Italic.ttf");
+  src: url("../fonts/Roboto_500.ttf");
+  src: url("../fonts/Roboto_500_Italic.ttf");
+  src: url("../fonts/Roboto_700.ttf");
+  src: url("../fonts/Roboto_700_Italic.ttf");
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+.main {
+  
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//----------------------------------- ХЭДЕР НАЧАЛО ----------------- //
+.header {
+  background: left 0 top 0 / 1920px 1080px no-repeat url('../img/header-back.jpg');
+
+  @media (min-width: 1920px) {
+    background: left 0 top 0 / 100% 100% no-repeat url('../img/header-back.jpg');
+  }
+}
+
+.header__content {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 40px 0 80px 0;
+
+  @media (max-width: 1279px) {
+    padding: 30px 20px 60px 20px;
+  }
+  @media (max-width: 767px) {
+    padding: 30px 20px 40px 20px;
+  }
+  @media (max-width: 479px) {
+    padding: 30px 20px 40px 20px;
+  }
+}
+
+.header__top {
+  display: flex;
+  justify-content: space-between;
+}
+
+.header__top-menu {
+  display: flex;
+  align-items: center;
+}
+
+.top-menu__lines {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 0 20px 0 0;
+}
+.lines__line1, .lines__line2, .lines__line3 {
+  display: inline-block;
+  background-color: #2A94E2;
+  height: 3px;
+  margin: 0 0 10px 0;
+}
+.lines__line1 {
+  width: 40px;
+}
+.lines__line2 {
+  width: 30px;
+}
+.lines__line3 {
+  width: 20px;
+  margin: 0;
+}
+
+.header__top-logo {
+  display: flex;
+  align-items: center;
+
+  @media (max-width: 767px) {
+    display: none;
+  }
+}
+.top-logo__logo {
+  width: 141px;
+  height: 110px;
+}
+.top-logo__slogan {
+  @include adaptiveFont(13, 11);
+  line-height: 1.5;
+  color: #000000;
+  margin-left: 30px;
+}
+
+.header__top-callback {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+.top-callback__phone {
+  @include adaptiveFont(30, 16);
+  color: #000000;
+  margin: 23px 0 20px 0;
+}
+.top-callback__button {
+  font-size: 16px;
+  color: #000000;
+  max-width: 250px;
+  min-width: 200px;
+  height: 55px;
+  border: 1px solid #2A94E2;
+  border-radius: 5px;
+  background-color: transparent;
+}
+
+.header__slogan {
+  text-transform: uppercase;
+  // @include adaptiveFont(50, 24);
+  @include adaptiveFont(40, 20);
+  color: #000000;
+  font-weight: 700;
+  margin: 50px 0 50px 0;
+  line-height: 1.4;
+}
+
+.header__cando {
+  @include adaptiveFont(18, 16);
+  color: #000000;
+  line-height: 1.4;
+  font-weight: 300;
+  margin: 0 0 40px 0;
+}
+
+.header__cancount {
+  display: flex;
+  align-items: stretch;
+}
+.cancount__count {
+  display: inline-block;
+  @include adaptiveFont(60, 24);
+  font-weight: 300;
+  margin-right: 50px;
+}
+.count__do {
+  display: inline-block;
+  @include adaptiveFont(14, 12);
+}
+
+.pick-button {
+  max-width: 360px;
+  width: 100%;
+  height: 70px;
+  color: #FFFFFF;
+  font-size: 20px;
+  background-color: #2A94E2;
+  border-radius: 6px;
+  margin: 70px 0 0 0;
+}
+//----------------------------------- ХЭДЕР КОНЕЦ -------------------- //
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ---------------------------------------    НАШИ УСЛУГИ НАЧАЛО    ----------------------------------- //
+.services {
+  background-color: #FFFFFF;
+}
+
+.services__content {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 60px 0 30px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @media (max-width: 1279px) {
+    padding: 40px 20px 20px 20px;
+  }
+  @media (max-width: 767px) {
+    padding: 30px 20px 20px 20px;
+  }
+  @media (max-width: 479px) {
+    padding: 30px 20px 20px 20px;
+  }
+}
+
+.services__head {
+  @include adaptiveFont(35, 24);
+  font-weight: 700;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.grid__elem1 {
+  grid-area: elem1;
+  background: no-repeat url("../img/elem1-img.png");
+
+  @media (max-width: 767px) {
+    background: center / 100% auto no-repeat url("../img/elem1-img.png");
+  }
+}
+.grid__elem2 {
+  grid-area: elem2;
+  background: no-repeat url("../img/elem2-img.png");
+
+  @media (max-width: 767px) {
+    background: center / 100% auto no-repeat url("../img/elem2-img.png");
+  }
+}
+.grid__elem3 {
+  grid-area: elem3;
+  background: no-repeat url("../img/elem3-img.png");
+
+  @media (max-width: 767px) {
+    background: center / 100% auto no-repeat url("../img/elem3-img.png");
+  }
+}
+.grid__elem4 {
+  grid-area: elem4;
+  background: no-repeat url("../img/elem4-img.png");
+
+  @media (max-width: 767px) {
+    background: center no-repeat url("../img/elem4-img.png");
+  }
+}
+.grid__elem5 {
+  grid-area: elem5;
+  background: no-repeat url("../img/elem5-img.png");
+
+  @media (max-width: 767px) {
+    background: center no-repeat url("../img/elem5-img.png");
+  }
+}
+.grid__elem6 {
+  grid-area: elem6;
+  background: no-repeat url("../img/elem6-img.png");
+
+  @media (max-width: 767px) {
+    background: center / 100% auto no-repeat url("../img/elem6-img.png");
+  }
+}
+
+.grid__elem {
+  position: relative;
+}
+.grid__elem:hover .grid__elem-overlay {
+}
+.grid__elem:hover .elem__head {
+  bottom: 180px;
+}
+.grid__elem:hover .elem__text, .grid__elem:hover .elem__button {
+  opacity: 1;
+  transition: opacity 0.6s ease 0.2s;
+}
+
+.grid__elem-overlay {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  padding: 20px;
+  // background-position: 0 100px;
+  background: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.01), rgba(0,0,0,0.3), rgba(0,0,0,0.4), rgba(0,0,0,0.5), rgba(0,0,0,0.6), rgba(0,0,0,0.7), rgba(0,0,0,0.8) 80%);
+  transition: all 0.7s ease;
+}
+
+.services__grid {
+  display: grid;
+  grid-template-areas: 
+  'elem1 elem2 elem3'
+  'elem1 elem4 elem4'
+  'elem5 elem5 elem6';
+  grid-template-rows: 300px 300px 300px;
+  grid-gap: 10px;
+
+  @media (max-width: 767px) {
+    grid-template-areas: 
+    'elem1'
+    'elem2'
+    'elem3'
+    'elem4'
+    'elem5'
+    'elem6';
+    grid-template-rows: 300px 300px 300px 300px 300px 300px;
+  }
+}
+
+.elem__head {
+  position: absolute;
+  bottom: 0;
+  @include adaptiveFont(20, 16);
+  color: #FFFFFF;
+  font-weight: 700;
+  margin-bottom: 30px;
+  z-index: 1;
+  transition: bottom 0.7s ease;
+}
+
+.elem__text {
+  @include adaptiveFont(14, 12);
+  line-height: 1.6;
+  color: #FFFFFF;
+  margin-bottom: 30px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.elem__button {
+  max-width: 333px;
+  width: 100%;
+  height: 60px;
+  border-radius: 5px;
+  color: #FFFFFF;
+  font-size: 16px;
+  background-color: #2A94E2;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+// ---------------------------------------    НАШИ УСЛУГИ КОНЕЦ    ----------------------------------- //
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// -------------------------------------------    АПАРТАМЕНТЫ НАЧАЛО    ------------------------------------------ //
+.apartments {
+  background-color: #FFFFFF;
+}
+
+.apartments__content {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 30px 0 60px 0;
+
+  @media (max-width: 1279px) {
+    padding: 20px 20px 40px 20px;
+  }
+  @media (max-width: 767px) {
+    padding: 20px 20px 30px 20px;
+  }
+  @media (max-width: 479px) {
+    padding: 20px 20px 30px 20px;
+  }
+}
+
+.apartments__head {
+  @include adaptiveFont(35, 24);
+  font-weight: 700;
+  margin-bottom: 35px;
+  color: #000000;
+  text-align: center;
+}
+
+.apartments__subhead {
+  @include adaptiveFont(24, 18);
+  font-weight: 300;
+  line-height: 1.4;
+  text-align: center;
+  color: #000000;
+  margin-bottom: 50px;
+}
+
+.apartments__filter {
+  display: flex;
+  margin-bottom: 30px;
+
+  @media (max-width: 767px) {
+    flex-direction: column;
+  }
+}
+.apartments__filter button {
+  flex-basis: 20%;
+  height: 60px;
+  font-size: 16px;
+  color: #000000;
+  border: 2px solid #F6F6F6;
+  background-color: #FFFFFF;
+
+  @media (max-width: 767px) {
+    flex-basis: auto;
+  }
+}
+.apartments__filter button:hover {
+  background-color: #F6F6F6;
+  transition: background-color 0.5s ease;
+}
+.apartments__filter button:focus {
+  background-color: #2A94E2;
+  color: #FFFFFF;
+  border: 2px solid #2A94E2;
+  transition: all 0.5s ease;
+}
+
+.apartments__plates {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 20px;
+
+  @media (max-width: 767px) {
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+}
+
+.plates__plate {
+  flex-basis: calc(50% - 10px);
+  margin-bottom: 30px;
+  max-width: 555px;
+  border: 1px solid #F6F6F6;
+
+  @media (max-width: 767px) {
+    flex-basis: auto;
+  }
+}
+.plates__plate:hover {
+  box-shadow: 0px 3px 4px 2px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.2s ease;
+}
+.plate_hide {
+  animation: hidePlate 0.5s forwards;
+}
+@keyframes hidePlate {
+  to {
+    opacity: 0;
+    max-width: 0;
+    max-height: 0;
+    padding: 0;
+    margin: 0;
+    border: 0;
+  }
+}
+
+.plate__image {
+}
+
+.plate__text {
+  padding: 20px;
+}
+
+.plate__head {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+.plate__head:hover {
+  color: #2A94E2;
+  transition: color 0.5s ease;
+}
+
+.plate__lot, .price__price-area, .area__area, .area__floor {
+  font-size: 16px;
+  font-weight: 300;
+  color: #000000;
+}
+
+.plate__lot, .price__price, .area__area {
+  margin-bottom: 30px;
+}
+
+.plate__specification {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.price__price {
+  font-size: 30px;
+  font-weight: 300;
+}
+
+.plate__button {
+  width: 100%;
+  height: 60px;
+  font-size: 16px;
+  color: #000000;
+  background-color: #F6F6F6;
+}
+.plate__button:hover {
+  background-color: #2A94E2;
+  color: #ffffff;
+  transition: all 0.7s ease;
+}
+
+.apartments__show-more {
+  font-size: 16px;
+  color: #000000;
+  width: 100%;
+  height: 60px;
+  background-color: #fafafa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.apartments__show-more:hover {
+  background-color: #f6f6f6;
+  transition: background-color 0.5s ease;
+}
+.apartments__show-more img {
+  display: inline-block;
+  margin-left: 10px;
+  height: 8px;
+  width: 13px;
+}
+// -------------------------------------------    АПАРТАМЕНТЫ КОНЕЦ    ------------------------------------------ //
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// -------------------------------------------    BLITZ  ESTATE НАЧАЛО    ----------------------------------------- //
+.blitz {
+  background-color: #F6F6F6;
+}
+
+.blitz__content {
+  margin: 0 auto;
+  max-width: 1140px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 65px 0 65px 0;
+
+  @media (max-width: 1279px) {
+    padding: 45px 20px 45px 20px;
+  }
+  @media (max-width: 767px) {
+    padding: 30px 20px 30px 20px;
+  }
+  @media (max-width: 479px) {
+    padding: 30px 20px 30px 20px;
+  }
+}
+
+.blitz__text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-right: 50px;
+  flex-basis: 50%;
+
+  @media (max-width: 767px) {
+    flex-basis: 100%;
+    align-items: center;
+    padding: 0;
+  }
+}
+
+.blitz__text-head {
+  @include adaptiveFont(35, 24);
+  font-weight: 700;
+  margin-bottom: 30px;
+  align-self: stretch;
+  text-align: center
+}
+
+.blitz__text-text {
+  @include adaptiveFont(14, 12);
+  line-height: 1.6;
+  margin-bottom: 20px;
+  color: #000000;
+  align-self: stretch;
+}
+
+.blitz__text-button {
+  height: 60px;
+  width: 270px;
+  border-radius: 5px;
+  background-color: #2A94E2;
+  color: #FFFFFF;
+  font-size: 20px;
+  margin-top: 30px;
+}
+
+.blitz__images {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 50%;
+
+  @media (max-width: 767px) {
+    display: none;
+  }
+}
+
+.images__large-image {
+  margin-bottom: 10px;
+}
+
+.images__images-panel {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.images-panel__image-small {
+  border: 2px solid transparent;
+  transition: border 0.5s ease;
+}
+.images-panel__image-small:hover {
+  border: 2px solid #2A94E2;
+}
+// -------------------------------------------    BLITZ  ESTATE КОНЕЦ    ----------------------------------------- //
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// -------------------------------------------    НАПРАВЛЕНИЯ АГЕНТСТВА НАЧАЛО    ------------------------------------ //
+.directions {
+  background-color: #FFFFFF;  
+}
+
+.directions__content {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 60px 0 50px 0;
+
+  @media (max-width: 1279px) {
+    padding: 40px 20px 40px 20px;
+  }
+  @media (max-width: 767px) {
+    padding: 30px 20px 30px 20px;
+  }
+  @media (max-width: 479px) {
+    padding: 30px 20px 30px 20px;
+  }
+}
+
+.directions__head {
+  @include adaptiveFont(35, 24);
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.directions__cards {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  @media (max-width: 767px) {
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+}
+
+.card {
+  flex-basis: calc(50% - 10px);
+  max-width: 555px;
+  height: 279px;
+  border: 1px solid #2A94E2;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  padding: 30px 30px 30px 30px;
+  background: 
+  left 0px top 15px / auto auto no-repeat url("../img/card-line1.png"), 
+  left 6px top 25px / auto auto no-repeat url("../img/card-line2.png"), 
+  left 12px top 35px / auto auto no-repeat url("../img/card-line3.png");
+
+  @media (max-width: 767px) {
+    flex-basis: auto;
+    height: auto;
+    padding: 30px 15px 30px 30px;
+  }
+}
+
+.card__head {
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.5;
+  margin-bottom: 30px;
+  color: #000000;
+}
+
+.card__content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  // align-items: center;
+}
+
+.card__chief {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.card__chief-name span {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 300;
+  color: #000000;
+}
+.card__chief-name {
+  font-size: 16px;
+  color: #000000;
+  line-height: 1.6;
+}
+
+.card__chief-contacts {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.chief-contacts__phone {
+  font-size: 25px;
+  color: #000000;
+  margin-bottom: 15px;
+}
+.chief-contacts__email {
+  font-size: 16px;
+  text-decoration: underline;
+  color: #000000;
+}
+
+.card__image {
+  margin-left: 10px;
+}
+// -------------------------------------------    НАПРАВЛЕНИЯ АГЕНТСТВА КОНЕЦ    ------------------------------------ //
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// -----------------------------------------     РУКОВОДИТЕЛЬ АГЕНТСТВА НАЧАЛО ----------------------------- //
+.agency-chief {
+  background-color: #EEF3FA;
+}
+
+.chief__content {
+  max-width: 1140px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  padding: 60px 0 0 0;
+
+  @media (max-width: 1279px) {
+    padding: 40px 20px 0px 20px;
+  }
+  @media (max-width: 767px) {
+    padding: 30px 20px 0px 20px;
+  }
+  @media (max-width: 479px) {
+    padding: 30px 20px 0px 20px;
+  }
+}
+
+.chief__text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex-basis: 50%;
+  margin-bottom: 30px;
+
+  @media (max-width: 767px) {
+    flex-basis: 100%;
+    align-items: center;
+  }
+}
+
+.chief__text-head {
+  @include adaptiveFont(33, 24);
+  font-weight: 700;
+  line-height: 1.4;
+  margin-bottom: 40px;
+  align-self: stretch;
+  text-align: center
+}
+
+.chief__text-name {
+  @include adaptiveFont(18, 16);
+  font-weight: 700;
+  margin-bottom: 30px;
+  align-self: stretch;
+  text-align: center
+}
+
+.chief__text p {
+  @include adaptiveFont(14, 12);
+  line-height: 1.6;
+  margin-bottom: 20px;
+  align-self: stretch;
+}
+
+.chief__text-button {
+  height: 60px;
+  width: 270px;
+  color: #FFFFFF;
+  font-size: 16px;
+  background-color: #2A94E2;
+  border-radius: 5px;
+  margin-top: 30px;
+}
+
+.chief__image {
+  display: flex;
+  justify-content: flex-end;
+  flex-basis: 50%;
+  align-self: flex-end;
+
+  @media (max-width: 767px) {
+    display: none;
+  }
+}
+.chief__image img {
+  width: 445px;
+  height: 534px;
+}
+// -----------------------------------------     РУКОВОДИТЕЛЬ АГЕНТСТВА КОНЕЦ  ----------------------------- //
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ------------------------------------- ФУТЕР НАЧАЛО ------------------ //
+.footer {
+  background-color: #535860;
+}
+
+.footer__content {
+  max-width: 1140px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  padding: 40px 0 30px 0;
+
+  @media (max-width: 1279px) {
+    padding: 30px 20px 30px 20px;
+  }
+  @media (max-width: 767px) {
+    padding: 30px 20px 30px 20px;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+  }
+}
+
+.footer__left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-basis: 33%;
+
+  @media (max-width: 767px) {
+    flex-basis: auto;
+    order: 2;
+    margin-bottom: 20px;
+  }
+}
+.footer__left p {
+  color: #FFFFFF;
+  @include adaptiveFont(13, 11);
+  margin: 0 0 20px 0;
+  line-height: 1.5;
+
+  @media (max-width: 767px) {
+    width: 100%;
+    text-align: center;
+  }
+}
+.footer__left div {
+  @media (max-width: 767px) {
+    width: 100%;
+  }
+}
+.footer__inn p {
+  margin: 0;
+}
+
+.footer__center {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  justify-self: center;
+  flex-basis: 33%;
+
+  @media (max-width: 767px) {
+    flex-basis: auto;
+    order: 3;
+  }
+}
+.footer__center img {
+  max-width: 141px;
+  height: auto;
+}
+.footer__center p {
+  color: #FFFFFF;
+  @include adaptiveFont(13, 11);
+  line-height: 1.5;
+  margin-left: 30px;
+}
+
+.footer__right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-basis: 33%;
+
+  @media (max-width: 767px) {
+    flex-basis: auto;
+    order: 1;
+    margin-bottom: 20px;
+  }
+}
+.footer__callback-phone {
+  @include adaptiveFont(30, 22);
+  color: #FFFFFF;
+  text-decoration: none;
+
+  @media (max-width: 767px) {
+    margin-bottom: 15px;
+  }
+}
+.footer__callback-email {
+  color: #FFFFFF;
+  @include adaptiveFont(22, 18);
+  text-decoration: underline;
+  margin: auto 0;
+
+  @media (max-width: 767px) {
+    margin-bottom: 15px;
+  }
+}
+.footer__callback-button {
+  height: 55px;
+  max-width: 250px;
+  min-width: 200px;
+  background-color: #FFFFFF;
+  color: #000000;
+  font-size: 16px;
+  border-radius: 5px;
+}
+// --------------------------------------- ФУТЕР КОНЕЦ -------------------- //
